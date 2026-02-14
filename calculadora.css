@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+body {
+    padding: 20px;
+    margin: 0;
+    background: linear-gradient(to right, #202d3a, #000000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.main-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    font-size: 2.2rem;
+    text-shadow: 0 0 10px rgba(81, 3, 133, 0.623), 0 0 20px rgba(99, 6, 219, 0.541);
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.tema {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.8rem;
+    text-shadow: 0 0 10px rgba(81, 3, 133, 0.623), 0 0 20px rgba(99, 6, 219, 0.541);
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.calculadora {
+    display: grid;
+    grid-template-columns: repeat(4, 75px);
+    grid-template-rows: auto; 
+    background: linear-gradient(to right, #000000c0, #202d3a);
+    padding: 15px;
+    border-radius: 32px;
+    box-shadow: 15px 10px 0px 5px #00000033;
+}
+
+.display {
+    grid-column: 1 / -1;
+    padding: 20px;
+    display: flex;
+    margin: 10px 10px 20px;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #949292;
+    border-radius: 32px;
+    text-align: right;
+    justify-content: flex-end;
+    word-break: break-all; 
+    overflow: hidden; 
+    min-height: 130px; 
+}
+
+#valor-actual {
+    font-size: 2rem; 
+    line-height: 1.1;
+    width: 100%;
+}
+
+#valor-anterior {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.6); 
+    min-height: 1.5rem;
+}
+
+#toggle-cientifica {
+    grid-column: 1 / -1;
+    background-color: #4320838e;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    height: 35px;
+    margin: 5px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px #432083;
+}
+
+#seccion-cientifica {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, 75px);
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.cientifica-oculta { max-height: 0; }
+.cientifica-visible { max-height: 300px; margin-bottom: 10px; }
+
+button {
+    cursor: pointer;
+    margin: 5px;
+    height: 65px;
+    border-radius: 32px;
+    font-size: 1.5em;
+    border: none;
+    background-color: #949292;
+    box-shadow: 5px 5px 10px -3px #0000001e, -5px -5px 15px 3px #43208341;
+    transition: all 0.2s ease;
+}
+
+button:active {
+    background-color: #293b4d9a;
+    transform: scale(0.95);
+}
+
+.operador-cientifico {
+    background-color: #949292;
+    color: #000000;
+    font-size: 1.1rem;
+}
+
+.col-2 { grid-column: span 1; }
+.col-3 { grid-column: span 2; } 
+
+@media (max-width: 600px) {
+    .calculadora { grid-template-columns: repeat(4, 65px); }
+    button { height: 55px; font-size: 1.2rem; }
+}
+
+/* --- LOGIN STYLES --- */
+
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #293b4d 0%, #0e0d0d 100%);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.login-box {
+    background: linear-gradient(145deg, #a1a1a1, #232d36);
+    padding: 3rem;
+    border-radius: 32px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(67, 32, 131, 0.5);
+    border: 1px solid #432083;
+    max-width: 400px;
+    width: 90%;
+}
+
+.input-container-login {
+    position: relative;
+    margin: 2rem 0;
+}
+
+#asesor-name-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #a1a1a1;
+    padding: 10px;
+    color: #000000; 
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    outline: none;
+    text-align: center;
+}
+
+.glow-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #9966ff;
+    box-shadow: 0 0 10px #9966ff;
+    transition: width 0.4s ease;
+}
+
+#asesor-name-input:focus + .glow-line {
+    width: 100%;
+}
+
+.btn-login-neon {
+    background: #432083;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #432083;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+#asesor-name-display {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1rem;
+    text-shadow: 0 0 10px rgba(81, 3, 133, 0.623), 0 0 20px rgba(99, 6, 219, 0.541);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
